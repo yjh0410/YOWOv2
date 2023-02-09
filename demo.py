@@ -107,7 +107,7 @@ def multi_hot_vis(args, frame, out_bboxes, orig_w, orig_h, class_names, act_pose
 
 
 @torch.no_grad()
-def detect(args, d_cfg, model, device, transform, class_names, class_colors):
+def detect(args, model, device, transform, class_names, class_colors):
     # path to save 
     save_path = os.path.join(args.save_folder, 'demo', 'videos')
     os.makedirs(save_path, exist_ok=True)
@@ -263,7 +263,6 @@ if __name__ == '__main__':
 
     # run
     detect(args=args,
-            d_cfg=d_cfg,
             model=model,
             device=device,
             transform=basetransform,
