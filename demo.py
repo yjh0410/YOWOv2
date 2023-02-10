@@ -77,7 +77,7 @@ def multi_hot_vis(args, frame, out_bboxes, orig_w, orig_h, class_names, act_pose
 
         # score = obj * cls
         det_conf = float(bbox[4])
-        cls_scores = np.sqrt(det_conf * cls_conf)
+        cls_scores = det_conf * cls_conf
 
         indices = np.where(cls_scores > args.vis_thresh)
         scores = cls_scores[indices]
