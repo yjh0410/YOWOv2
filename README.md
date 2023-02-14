@@ -1,4 +1,4 @@
-# YOWOv2
+# YOWOv2: A Stronger yet Efficient Multi-level Detection Framework for Real-time Spatio-temporal Action Detection
 
 ## Requirements
 - We recommend you to use Anaconda to create a conda environment:
