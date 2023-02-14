@@ -13,7 +13,7 @@ def FLOPs_and_Params(model, img_size, len_clip, device):
     print('==============================')
     flops, params = profile(model, inputs=(video_clip, ))
     print('==============================')
-    print('FLOPs : {:.2f} G'.format(flops * 2.0 / 1e9))
+    print('FLOPs : {:.2f} G'.format(flops / 1e9))
     print('Params : {:.2f} M'.format(params / 1e6))
     
     # set train mode.
