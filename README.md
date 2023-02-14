@@ -27,9 +27,10 @@ pip install -r requirements.txt
 ![image](./img_files/ucf24_v_SalsaSpin_g03_c01.gif)
 
 # Dataset
-You can download **UCF24** from the following links:
 
 ## UCF101-24:
+You can download **UCF24** from the following links:
+
 * Google drive
 
 Link: https://drive.google.com/file/d/1Dwh90pRi7uGkH5qLRjQIFiEmMJrAog5J/view?usp=sharing
