@@ -1,4 +1,7 @@
 # YOWOv2: A Stronger yet Efficient Multi-level Detection Framework for Real-time Spatio-temporal Action Detection
+## Overview of YOWOv2
+![image](./img_files/yowov2.png)
+
 
 ## Requirements
 - We recommend you to use Anaconda to create a conda environment:
@@ -58,6 +61,10 @@ You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to 
 |  YOWOv2-Medium |   32   |  12.7  | 52.0 M  | 83.7  | 52.5  |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ucf24_k32.pth) |
 |  YOWOv2-Large  |   32   |  91.9  | 109.7 M | 87.0  | 52.8  |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ucf24_k32.pth) |
 
+**Qualitative results on UCF101-24**
+![image](./img_files/vis_ucf24.png)
+
+
 * AVA v2.2
 
 |     Model      |    Clip    |    mAP    |   FPS   |    weight    |
@@ -70,6 +77,9 @@ You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to 
 |  YOWOv2-Tiny   |     32     |   15.6    |   49    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_tiny_ava_k32.pth) |
 |  YOWOv2-Medium |     32     |   18.4    |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ava_k32.pth) |
 |  YOWOv2-Large  |     32     |   21.7    |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ava_k32.pth) |
+
+**Qualitative results on AVA**
+![image](./img_files/vis_ava.png)
 
 
 ## Train YOWOv2
@@ -168,7 +178,18 @@ python demo.py --cuda -d ucf24 -v yowo_v2_nano -size 224 --weight path/to/weight
                       -d ava_v2.2
 ```
 
+**Qualitative results in real scenarios**
+![image](./img_files/vis_demo.png)
+
+
 ## References
 If you are using our code, please consider citing our paper.
 
-Comming soon ...
+```
+@article{yang2023yowov2,
+  title={YOWOv2: A Stronger yet Efficient Multi-level Detection Framework for Real-time Spatio-temporal Action Detection},
+  author={Yang, Jianhua and Kun, Dai},
+  journal={arXiv preprint arXiv:2302.06848},
+  year={2023}
+}
+```
