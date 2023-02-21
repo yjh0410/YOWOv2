@@ -63,6 +63,8 @@ You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to 
 |  YOWOv2-Medium |   32   |  12.7  | 52.0 M  | 83.7  | 52.5  |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ucf24_k32.pth) |
 |  YOWOv2-Large  |   32   |  91.9  | 109.7 M | 87.0  | 52.8  |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ucf24_k32.pth) |
 
+*All FLOPs are measured with a video clip with 16 or 32 frames (224×224). The FPS is measured with batch size 1 on a 3090 GPU from the model inference to the NMS operation.*
+
 **Qualitative results on UCF101-24**
 ![image](./img_files/vis_ucf24.png)
 

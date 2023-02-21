@@ -67,6 +67,8 @@ Link: https://drive.google.com/file/d/1Dwh90pRi7uGkH5qLRjQIFiEmMJrAog5J/view?usp
 |  YOWOv2-Medium |   32   |  12.7  | 52.0 M  | 83.7  | 52.5  |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ucf24_k32.pth) |
 |  YOWOv2-Large  |   32   |  91.9  | 109.7 M | 87.0  | 52.8  |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ucf24_k32.pth) |
 
+* 我们使用包含16或32帧（每帧图像的尺寸为224×224）的视频片段来测试模型的FLOPs和FPS。测试FPS时，我们在一张3090GPU上以batch size=1的条件下去完成的，并且，FPS的测试范围包括模型前向推理、后处理以及NMS操作。*
+
 **UCF101-24的检测结果的可视化图像**
 ![image](./img_files/vis_ucf24.png)
 
