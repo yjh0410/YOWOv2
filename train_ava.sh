@@ -2,7 +2,7 @@
 python train.py \
         --cuda \
         -d ava_v2.2 \
-        -v yowo_v2_nano \
+        -v yowo_v2_large \
         --root /mnt/share/sda1/dataset/STAD/ \
         --num_workers 4 \
         --eval_epoch 1 \
@@ -13,4 +13,4 @@ python train.py \
         -ldr 0.5 \
         -bs 8 \
         -accu 16 \
-        -K 32
+        -K 16

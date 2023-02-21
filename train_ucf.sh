@@ -12,5 +12,5 @@ python train.py \
         -ldr 0.5 \
         -bs 8 \
         -accu 16 \
-        -K 32
+        -K 16
         # --eval \

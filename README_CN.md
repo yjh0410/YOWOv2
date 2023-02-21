@@ -1,27 +1,31 @@
 # YOWOv2: A Stronger yet Efficient Multi-level Detection Framework for Real-time Spatio-temporal Action Detection
-English | [简体中文](https://github.com/yjh0410/YOWOv2/blob/main/README_CN.md)
-
-## Overview of YOWOv2
+## YOWOv2的网络结构图
 ![image](./img_files/yowov2.png)
 
 
-## Requirements
-- We recommend you to use Anaconda to create a conda environment:
+## 配置环境
+- 首先，我们建议使用Anaconda来创建一个conda的虚拟环境
 ```Shell
 conda create -n yowo python=3.6
 ```
 
-- Then, activate the environment:
+- 然后, 请激活已创建的虚拟环境
 ```Shell
 conda activate yowo
 ```
 
-- Requirements:
+- 接着，配置环境:
 ```Shell
 pip install -r requirements.txt 
 ```
 
-## Visualization
+项目作者所使用的环境配置:
+- PyTorch = 1.9.1
+- Torchvision = 0.10.1
+
+为了能够正常运行该项目的代码，请确保您的torch版本为1.x系列。
+
+## 检测结果的可视化图像
 
 ![image](./img_files/ucf24_v_Basketball_g07_c04.gif)
 ![image](./img_files/ucf24_v_Biking_g01_c01.gif)
@@ -31,25 +35,25 @@ pip install -r requirements.txt
 ![image](./img_files/ucf24_v_IceDancing_g02_c05.gif)
 ![image](./img_files/ucf24_v_SalsaSpin_g03_c01.gif)
 
-# Dataset
+# 数据集
 
 ## UCF101-24:
-You can download **UCF24** from the following links:
+建议使用者从下面给出的链接来获取 **UCF24** 数据集:
 
 * Google drive
 
 Link: https://drive.google.com/file/d/1Dwh90pRi7uGkH5qLRjQIFiEmMJrAog5J/view?usp=sharing
 
-* BaiduYun Disk
+* 百度网盘
 
-Link: https://pan.baidu.com/s/11GZvbV0oAzBhNDVKXsVGKg
+获取链接: https://pan.baidu.com/s/11GZvbV0oAzBhNDVKXsVGKg
 
-Password: hmu6 
+提取码: hmu6 
 
 ## AVA
-You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to prepare **AVA** dataset.
+建议使用这遵从[here](https://github.com/yjh0410/AVA_Dataset)给出的要求来准备 **AVA** 数据集.
 
-# Experiment
+# 实验结果
 * UCF101-24
 
 |      Model     |  Clip  | GFLOPs |  Params | F-mAP | V-mAP |   FPS   |    Weight    |
@@ -63,7 +67,7 @@ You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to 
 |  YOWOv2-Medium |   32   |  12.7  | 52.0 M  | 83.7  | 52.5  |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ucf24_k32.pth) |
 |  YOWOv2-Large  |   32   |  91.9  | 109.7 M | 87.0  | 52.8  |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ucf24_k32.pth) |
 
-**Qualitative results on UCF101-24**
+**UCF101-24的检测结果的可视化图像**
 ![image](./img_files/vis_ucf24.png)
 
 
@@ -80,66 +84,74 @@ You can use instructions from [here](https://github.com/yjh0410/AVA_Dataset) to 
 |  YOWOv2-Medium |     32     |   18.4    |   40    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_medium_ava_k32.pth) |
 |  YOWOv2-Large  |     32     |   21.7    |   22    | [ckpt](https://github.com/yjh0410/YOWOv2/releases/download/yowo_v2_weight/yowo_v2_large_ava_k32.pth) |
 
-**Qualitative results on AVA**
+**AVA的检测结果的可视化图像**
 ![image](./img_files/vis_ava.png)
 
 
-## Train YOWOv2
+## 训练 YOWOv2
 * UCF101-24
 
-For example:
+使用者可以参考下面的命令来使用 UCF101-24 数据集训练 YOWOv2:
 
 ```Shell
 python train.py --cuda -d ucf24 --root path/to/dataset -v yowo_v2_nano --num_workers 4 --eval_epoch 1 --max_epoch 8 --lr_epoch 2 3 4 5 -lr 0.0001 -ldr 0.5 -bs 8 -accu 16 -K 16
 ```
 
-or you can just run the script:
+或者，使用者可以运行已准备好的脚本来训练。
 
 ```Shell
 sh train_ucf.sh
 ```
 
+为了顺利运行该脚本，请使用者根据自己的本地设备的情况来修改其中的参数。
+
 * AVA
+
+使用者可以参考下面的命令来使用 AVA 数据集训练YOWOv2:
+
+
 ```Shell
 python train.py --cuda -d ava_v2.2 --root path/to/dataset -v yowo_v2_nano --num_workers 4 --eval_epoch 1 --max_epoch 10 --lr_epoch 3 4 5 6 -lr 0.0001 -ldr 0.5 -bs 8 -accu 16 -K 16 --eval
 ```
 
-or you can just run the script:
+或者，使用者可以运行已准备好的脚本来训练。
 
 ```Shell
 sh train_ava.sh
 ```
 
-##  Test YOWOv2
+为了顺利运行该脚本，请使用者根据自己的本地设备的情况来修改其中的参数。
+
+##  测试 YOWOv2
 * UCF101-24
-For example:
+使用者可以参考下面的命令来在 UCF101-24 数据集测试YOWOv2:
 
 ```Shell
 python test.py --cuda -d ucf24 -v yowo_v2_nano --weight path/to/weight -size 224 --show
 ```
 
 * AVA
-For example:
+使用者可以参考下面的命令来使用 AVA 数据集测试YOWOv2:
 
 ```Shell
 python test.py --cuda -d ava_v2.2 -v yowo_v2_nano --weight path/to/weight -size 224 --show
 ```
 
-##  Test YOWOv2 on AVA video
-For example:
+##  使用 AVA 的视频来测试 YOWOv2
+使用者可以参考下面的命令来使用 AVA 的视频测试YOWOv2:
 
 ```Shell
 python test_video_ava.py --cuda -d ava_v2.2 -v yowo_v2_nano --weight path/to/weight --video path/to/video --show
 ```
 
-Note that you can set ```path/to/video``` to other videos in your local device, not AVA videos.
+注意，使用者需要将 ```path/to/video``` 修改为要测试的视频的文件路径。
 
-## Evaluate YOWOv2
+## 验证 YOWOv2
 * UCF101-24
-For example:
+使用者可以参考下面的命令来使用 UCF101-24 验证YOWOv2的性能:
 
 ```Shell
-# Frame mAP
+# 计算 Frame mAP
 python eval.py \
         --cuda \
         -d ucf24 \
@@ -151,7 +163,7 @@ python eval.py \
 ```
 
 ```Shell
-# Video mAP
+# 计算 Video mAP
 python eval.py \
         --cuda \
         -d ucf24 \
@@ -163,8 +175,7 @@ python eval.py \
 ```
 
 * AVA
-
-Run the following command to calculate frame mAP@0.5 IoU:
+使用者可以参考下面的命令来使用 AVA 数据集验证YOWOv2的性能：
 
 ```Shell
 python eval.py \
@@ -175,19 +186,25 @@ python eval.py \
         --weight path/to/weight
 ```
 
+在AVA数据集上，我们仅计算`Frame mAP@0.5 IoU`指标。
+
 ## Demo
+使用者可以参考下面的命令来测试本地的视频文件：
+
 ```Shell
 # run demo
 python demo.py --cuda -d ucf24 -v yowo_v2_nano -size 224 --weight path/to/weight --video path/to/video --show
                       -d ava_v2.2
 ```
 
-**Qualitative results in real scenarios**
+注意，使用者需要将 ```path/to/video``` 修改为要测试的视频的文件路径。
+
+**真实场景下的一些检测结果的可视化图像**
 ![image](./img_files/vis_demo.png)
 
 
-## References
-If you are using our code, please consider citing our paper.
+## 参考文献
+如果你正在使用我们的代码，请引用我们的论文：
 
 ```
 @article{yang2023yowov2,
