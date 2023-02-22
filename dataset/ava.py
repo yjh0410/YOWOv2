@@ -231,6 +231,7 @@ if __name__ == '__main__':
     is_train = False
     img_size = 224
     len_clip = 16
+    sampling_rate = 2
     dataset_config = {
         'data_root': '/mnt/share/sda1/dataset/STAD/AVA_Dataset',
         'frames_dir': 'frames/',
@@ -263,7 +264,7 @@ if __name__ == '__main__':
         img_size=img_size,
         transform=train_transform,
         len_clip=len_clip,
-        sampling_rate=1
+        sampling_rate=sampling_rate
     )
 
     print(len(train_dataset))
