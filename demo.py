@@ -96,12 +96,12 @@ def multi_hot_vis(args, frame, out_bboxes, orig_w, orig_h, class_names, act_pose
 
             for _, cls_ind in enumerate(indices):
                 text.append("[{:.2f}] ".format(scores[_]) + str(class_names[cls_ind]))
-                text_size.append(cv2.getTextSize(text[-1], font, fontScale=1.0, thickness=1)[0])
-                coord.append((x1+6, y1+28+40*_))
-                cv2.rectangle(blk, (coord[-1][0]-1, coord[-1][1]-24), (coord[-1][0]+text_size[-1][0]+1, coord[-1][1]+text_size[-1][1]-4), (0, 255, 0), cv2.FILLED)
-            frame = cv2.addWeighted(frame, 1.0, blk, 1.0, 1)
+                text_size.append(cv2.getTextSize(text[-1], font, fontScale=0.5, thickness=1)[0])
+                coord.append((x1+3, y1+14+20*_))
+                cv2.rectangle(blk, (coord[-1][0]-1, coord[-1][1]-12), (coord[-1][0]+text_size[-1][0]+1, coord[-1][1]+text_size[-1][1]-4), (0, 255, 0), cv2.FILLED)
+            frame = cv2.addWeighted(frame, 1.0, blk, 0.5, 1)
             for t in range(len(text)):
-                cv2.putText(frame, text[t], coord[t], font, 1.0, (0, 0, 0), 1)
+                cv2.putText(frame, text[t], coord[t], font, 0.5, (0, 0, 0), 1)
     
     return frame
 
