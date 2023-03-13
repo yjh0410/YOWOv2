@@ -132,6 +132,7 @@ def detect(args, model, device, transform, class_names, class_colors):
         if ret:
             # to RGB
             frame_rgb = frame[..., (2, 1, 0)]
+            print(frame_rgb.shape)
 
             # to PIL image
             frame_pil = Image.fromarray(frame_rgb.astype(np.uint8))
