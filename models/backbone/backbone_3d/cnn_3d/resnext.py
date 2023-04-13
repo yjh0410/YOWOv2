@@ -257,16 +257,29 @@ def build_resnext_3d(model_name='resnext101', pretrained=True):
 
 if __name__ == '__main__':
     import time
-    model, feats = build_resnext_3d(model_name='resnext50', pretrained=False)
+    from thop import profile
+
     if torch.cuda.is_available():
         device = torch.device("cuda")
     else:
         device = torch.device("cpu")
+        
+    model, feats = build_resnext_3d(model_name='resnext50', pretrained=False)
     model = model.to(device)
 
-    x = torch.randn(1, 3, 16, 64, 64).to(device)
+    x = torch.randn(1, 3, 32, 256, 256).to(device)
     # star time
     t0 = time.time()
-    out = model(x)
-    print('time', time.time() - t0)
-    print(out.shape)
+    # inference
+    outs = model(x)
+    for y in outs:
+        print(y.shape)
+    # end time
+    print('Inference time: {}'.format(time.time() - t0))
+
+    # FLOPs & Params
+    print('==============================')
+    flops, params = profile(model, inputs=(x, ), verbose=False)
+    print('==============================')
+    print('GFLOPs : {:.2f}'.format(flops / 1e9))
+    print('Params : {:.2f} M'.format(params / 1e6))
