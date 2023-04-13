@@ -30,7 +30,6 @@ class SimOTA(object):
         num_gt = len(tgt_labels)
 
         # positive candidates
-        print(strides.shape, tgt_bboxes.shape, anchors.shape, pred_conf.shape)
         fg_mask, is_in_boxes_and_center = \
             self.get_in_boxes_info(
                 tgt_bboxes,
