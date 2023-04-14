@@ -82,7 +82,6 @@ class Criterion(object):
         for batch_idx in range(bs):
             tgt_labels = targets[batch_idx]["labels"].to(device)
             tgt_bboxes = targets[batch_idx]["boxes"].to(device)
-            print(tgt_bboxes)
 
             # denormalize tgt_bbox
             tgt_bboxes *= self.img_size
