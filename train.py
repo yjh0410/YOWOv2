@@ -129,7 +129,9 @@ def train():
     print("----------------------------------------------------------")
 
     # dist
-    print('World size: {}'.format(distributed_utils.get_world_size()))
+    world_size = distributed_utils.get_world_size()
+    per_gpu_batch = args.batch_size // world_size
+    print('World size: {}'.format(world_size))
     if args.distributed:
         distributed_utils.init_distributed_mode(args)
         print("git:\n  {}\n".format(distributed_utils.get_sha()))
@@ -154,8 +156,7 @@ def train():
     dataset, evaluator, num_classes = build_dataset(d_cfg, args, is_train=True)
 
     # dataloader
-    batch_size = args.batch_size * distributed_utils.get_world_size()
-    dataloader = build_dataloader(args, dataset, batch_size, CollateFunc(), is_train=True)
+    dataloader = build_dataloader(args, dataset, per_gpu_batch, CollateFunc(), is_train=True)
 
     # build model
     model, criterion = build_model(
@@ -169,16 +170,16 @@ def train():
         )
     model = model.to(device).train()
 
-    # SyncBatchNorm
-    if args.sybn and args.distributed:
-        print('use SyncBatchNorm ...')
-        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
-
     # DDP
     model_without_ddp = model
     if args.distributed:
         model = DDP(model, device_ids=[args.gpu])
         model_without_ddp = model.module
+
+    # SyncBatchNorm
+    if args.sybn and args.distributed:
+        print('use SyncBatchNorm ...')
+        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model)
 
     # Compute FLOPs and Params
     if distributed_utils.is_main_process():
