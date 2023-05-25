@@ -112,6 +112,14 @@ or you can just run the script:
 sh train_ava.sh
 ```
 
+If you have multiple GPUs, you can launch DDP to train the YOWOv2, for example:
+
+```Shell
+python train.py --cuda -dist -d ava_v2.2 --root path/to/dataset -v yowo_v2_nano --num_workers 4 --eval_epoch 1 --max_epoch 10 --lr_epoch 3 4 5 6 -lr 0.0001 -ldr 0.5 -bs 8 -accu 16 -K 16 --eval
+```
+
+*However, I have not multiple GPUs, so I am not sure if there are any bugs, or if the given performance can be reproduced using DDP.*
+
 ##  Test YOWOv2
 * UCF101-24
 For example:

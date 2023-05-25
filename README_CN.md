@@ -124,6 +124,14 @@ sh train_ava.sh
 
 为了顺利运行该脚本，请使用者根据自己的本地设备的情况来修改其中的参数。
 
+如果你具备单机多卡的硬件条件，可以尝试使用分布式训练策略，例如:
+
+```Shell
+python train.py --cuda -dist -d ava_v2.2 --root path/to/dataset -v yowo_v2_nano --num_workers 4 --eval_epoch 1 --max_epoch 10 --lr_epoch 3 4 5 6 -lr 0.0001 -ldr 0.5 -bs 8 -accu 16 -K 16 --eval
+```
+
+*不过，我没有单机多卡的条件，所以我没法保证这个项目的DDP不出错，也不确定使用DDP后能不能复现出我给出的性能结果.*
+
 ##  测试 YOWOv2
 * UCF101-24
 使用者可以参考下面的命令来在 UCF101-24 数据集测试YOWOv2:
