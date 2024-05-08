@@ -1,6 +1,8 @@
 # YOWOv2: A Stronger yet Efficient Multi-level Detection Framework for Real-time Spatio-temporal Action Detection
 English | [简体中文](https://github.com/yjh0410/YOWOv2/blob/master/README_CN.md)
 
+Thank you very much for everyone's star. YOWOv2 is an attempt I made in my spare time. It is a tribute to YOWO because I used to like YOWO very much. However, I am no longer deeply involved in the field of spatiotemporal motion detection, so I am not in a position to answer some of everyone's issues. For this, I am deeply sorry. YOWOv2 is a completely open spatiotemporal action detection project. I have not added any license to the project, so please feel free to do whatever you want without my consent. As long as my work can make even a small contribution to the progress of the world, I will be very happy.
+
 ## Overview of YOWOv2
 ![image](./img_files/yowov2.png)
 
